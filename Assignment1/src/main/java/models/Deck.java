@@ -11,6 +11,8 @@ import java.util.List;
 
 public class Deck {
 
+    private ArrayList<Card> deck;
+
     public Card[] newDeck(){
         Card d[] = new Card[52];
         if(d.length != 52){
@@ -26,7 +28,7 @@ public class Deck {
             }
             qrtdeck = qrtdeck + 13;
         }
-        return d;
+        deck = new ArrayList<Card>Arrays.asList(d);
     }
 
     public static void shuffleDeck(Card[] s){
@@ -35,10 +37,10 @@ public class Deck {
         s = deckList.toArray(s);
     }
 
-    private ArrayList<Card> deck;
+
 
     public Deck() { deck = new ArrayList<>(); }
-
+    /*
     public ArrayList<Card> getCards() { return deck; }
 
     public void setCards(ArrayList<Card> deck) {
@@ -48,7 +50,13 @@ public class Deck {
     public void addCard(Card p) {
         deck.add(p);
     }
+*/
+    public Card drawTop() {
+        Card t = deck.get(0);
+        deck.remove(0);
+        return t;
+    }
 
-    public void remove() { deck.remove(0); }
+//    public void remove() { deck.remove(0); }
 
 }
