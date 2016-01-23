@@ -7,13 +7,14 @@ package models;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Arrays;
-import java.util.List;
 
 public class Deck {
 
     private ArrayList<Card> deck;
 
-    public Card[] newDeck(){
+    public Deck() { deck = new ArrayList<>(); }
+
+    public void newDeck(){
         Card d[] = new Card[52];
         if(d.length != 52){
             System.out.printf("Error: Deck must have 52 cards\n");
@@ -29,34 +30,15 @@ public class Deck {
             qrtdeck = qrtdeck + 13;
         }
         deck = new ArrayList<Card>Arrays.asList(d);
-    }
-
-    public static void shuffleDeck(Card[] s){
-        List<Card> deckList = Arrays.asList(s);
-        Collections.shuffle(deckList);
-        s = deckList.toArray(s);
+        Collections.shuffle(deck);
     }
 
 
-
-    public Deck() { deck = new ArrayList<>(); }
-    /*
-    public ArrayList<Card> getCards() { return deck; }
-
-    public void setCards(ArrayList<Card> deck) {
-        this.deck = deck;
-    }
-
-    public void addCard(Card p) {
-        deck.add(p);
-    }
-*/
     public Card drawTop() {
         Card t = deck.get(0);
         deck.remove(0);
         return t;
     }
 
-//    public void remove() { deck.remove(0); }
 
 }
