@@ -16,28 +16,54 @@
 
 package controllers;
 
+import models.Card;
+import models.Deck;
 import ninja.Result;
 import ninja.Results;
+import models.Board;
 
 import com.google.inject.Singleton;
 
 
 @Singleton
 public class ApplicationController {
+    public Board testBoard = new Board();
+    public Deck theDeck = new Deck();
 
     public Result index() {
         return Results.html();
     }
 
     public Result acesUp() {
-        return Results.html().template("views/AcesUp/AcesUp.flt.html");
+        Result result =  Results.html().template("views/AcesUp/AcesUp.flt.html");
+        //result.render("paulTest", "4");
+        return result;
     }
 
-}
+    public Result getState() {
+        testBoard.modBoard(3,3,"Jack of Studs");
+        return Results.json().render(testBoard);
+    }
 
 
-public class Board {
+    public Result deal() {
+        testBoard.dealFourBoard();
+        return Results.json().render(testBoard);
+    }
 
-    public
+    public Result init() {
+        Deck deck = new Deck();
+        for(int x=2; x<=14; x++) {
+            deck.addCard(new Card(x, "hearts"));
+        }
+
+        return Results.json().render(deck);
+    }
+
+    public Result remove(Deck deck) {
+        deck.remove();
+
+        return Results.json().render(deck);
+    }
 
 }

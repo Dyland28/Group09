@@ -4,6 +4,7 @@ package models;
  * Created by Dilon_000 on 1/21/2016.
  */
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Arrays;
 import java.util.List;
@@ -33,5 +34,21 @@ public class Deck {
         Collections.shuffle(deckList);
         s = deckList.toArray(s);
     }
+
+    private ArrayList<Card> deck;
+
+    public Deck() { deck = new ArrayList<>(); }
+
+    public ArrayList<Card> getCards() { return deck; }
+
+    public void setCards(ArrayList<Card> deck) {
+        this.deck = deck;
+    }
+
+    public void addCard(Card p) {
+        deck.add(p);
+    }
+
+    public void remove() { deck.remove(0); }
 
 }
